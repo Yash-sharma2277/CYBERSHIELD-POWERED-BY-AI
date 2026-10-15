@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CyberShield Powered By AI</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+<style>
+:root{--bg:#040b1c;--card:#0a1630;--line:#16294f;--ink:#f1f5ff;--mute:#9db0d0;--blue:#1769ff;--cyan:#22d3ee;--low:#3ecf8e;--med:#f5b942;--high:#ff5d5d}
+body{background:radial-gradient(1000px 500px at 80% -10%,#0b2150 0,transparent 60%),var(--bg);color:var(--ink);font-family:Inter,system-ui,'Segoe UI',sans-serif;min-height:100vh}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+nav{border-bottom:1px solid var(--line);padding:14px 0}
+.brand{font-weight:700;font-size:1.25rem;color:var(--ink);text-decoration:none}.brand i{color:var(--blue)}.brand span{color:var(--blue)}
+.nl{color:var(--ink);text-decoration:none;margin-left:24px;font-weight:500;cursor:pointer}.nl:hover{color:var(--cyan)}
+.btn-b{background:var(--blue);color:#fff;border:1px solid var(--blue);font-weight:500;border-radius:6px;padding:9px 18px}.btn-b:hover{background:#3a82ff;color:#fff}
+.btn-o{background:transparent;color:var(--ink);border:1px solid var(--blue);border-radius:6px;padding:9px 18px}.btn-o:hover{background:#1769ff22;color:#fff}
+.pill{display:inline-block;background:#12306a;color:#cfe0ff;border-radius:20px;padding:5px 14px;font-size:.85rem;margin-bottom:22px}
+h1.hero{font-weight:700;font-size:clamp(2.3rem,5vw,3.6rem);line-height:1.12}
+.grad{background:linear-gradient(90deg,var(--cyan),#2563eb);-webkit-background-clip:text;background-clip:text;color:transparent}
+.muted{color:var(--mute)}
+.box{background:linear-gradient(160deg,#0b1b3d,#071126);border:1px solid var(--line);border-radius:14px}
+.shield{width:190px;height:190px;margin:10px auto;border-radius:50%;display:grid;place-items:center;font-size:5.5rem;color:#2f7bff;background:radial-gradient(circle,#1769ff33,transparent 70%);position:relative}
+.sat{position:absolute;width:52px;height:52px;border-radius:50%;background:#0f2250;display:grid;place-items:center;font-size:1.3rem;color:#4f8bff}
+.title-line{display:flex;align-items:center;gap:16px;justify-content:center}.title-line:before,.title-line:after{content:"";width:60px;height:2px;background:var(--blue)}
+.fc{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 14px;text-align:center;height:100%;position:relative}
+.fc:after{content:"";position:absolute;left:50%;bottom:10px;width:50px;height:3px;margin-left:-25px;background:var(--blue);border-radius:2px}
+.ic{width:70px;height:70px;border-radius:50%;border:2px solid;display:grid;place-items:center;margin:0 auto 14px;font-size:1.9rem}
+.cta{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 28px}
+.form-control{background:#050e22;color:var(--ink);border-color:var(--line)}.form-control:focus{background:#050e22;color:var(--ink);border-color:var(--blue);box-shadow:0 0 0 .2rem #1769ff33}
+.tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px}
+.tab{padding:8px 16px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--mute);cursor:pointer}
+.tab.on{background:var(--blue);border-color:var(--blue);color:#fff}
+.meter{height:10px;border-radius:5px;background:#050e22;overflow:hidden}.meter>div{height:100%;transition:width .5s}
+.Low{color:var(--low)}.Medium{color:var(--med)}.High{color:var(--high)}
+.bgLow{background:var(--low)}.bgMedium{background:var(--med)}.bgHigh{background:var(--high)}
+.score{font-size:3.5rem;font-weight:700;line-height:1}
+table{color:var(--ink)}td,th{background:none!important;color:inherit!important;border-color:var(--line)!important}th{color:var(--mute);font-weight:500}
+.step{color:var(--mute);padding:4px 0}.step.act{color:var(--cyan)}.step.done{color:var(--low)}.spin{display:inline-block;animation:sp 1s linear infinite}@keyframes sp{to{transform:rotate(360deg)}}
+.kic{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;font-size:1.3rem}.kv{font-size:1.7rem;font-weight:700;line-height:1.1}.ptitle{font-size:1rem;font-weight:600;margin-bottom:14px}
+a{color:var(--cyan)}.d-none{display:none!important}
+</style>
+</head>
+<body>
+<nav><div class="wrap d-flex justify-content-between align-items-center">
+  <a class="brand" onclick="go('home')" style="cursor:pointer"><i class="bi bi-shield-fill-check"></i> CyberShield <span>Powered By AI</span></a>
+  <div id="links" class="d-flex align-items-center"></div>
+</div></nav>
+
+<!-- HOME -->
+<section id="v-home" class="wrap">
+  <div class="row align-items-center py-5 g-4">
+    <div class="col-lg-6">
+      <span class="pill">AI-Powered Cybersecurity</span>
+      <h1 class="hero">Protect Your Digital World with <span class="grad">CyberShield Powered By AI</span></h1>
+      <p class="muted fs-5 my-4" style="max-width:520px">An AI-powered cyber threat detection platform designed to identify suspicious URLs, messages, QR codes and other potential cyber threats.</p>
+      <button class="btn btn-b me-2" onclick="start()">Get Started <i class="bi bi-arrow-right ms-1"></i></button>
+      <button class="btn btn-o" onclick="go('auth',false)">Login <i class="bi bi-arrow-right ms-1"></i></button>
+    </div>
+    <div class="col-lg-6"><div class="box text-center p-4">
+      <div class="shield"><i class="bi bi-shield-lock-fill"></i>
+        <div class="sat" style="left:-50px;top:10px"><i class="bi bi-link-45deg"></i></div>
+        <div class="sat" style="left:-50px;bottom:10px"><i class="bi bi-chat-dots"></i></div></div>
+      <h2 class="h4 mt-3">Cyber Threat Detection</h2>
+      <p class="muted">Analyze digital content and identify potentially dangerous cyber threats.</p>
+      <hr style="border-color:var(--line)">
+      <div style="color:var(--low)"><i class="bi bi-circle-fill me-2" style="font-size:.7rem"></i>Security System Ready</div>
+    </div></div>
+  </div>
+
+  <div class="title-line mt-4"><h2 class="h3 m-0">Features of CyberShield Powered By AI</h2></div>
+  <p class="muted text-center mb-4">Multiple security analysis tools in one platform.</p>
+  <div class="row g-3" id="feats"></div>
+
+  <div class="cta d-flex flex-wrap justify-content-between align-items-center gap-3 my-4">
+    <div class="d-flex align-items-center gap-3"><i class="bi bi-shield-fill-check" style="font-size:2.6rem;color:var(--blue)"></i>
+      <div><div class="h5 m-0">Start Protecting Yourself Today</div><div class="muted">Create your account and access the CyberShield powered by AI security dashboard.</div></div></div>
+    <button class="btn btn-b" onclick="start()">Create Account <i class="bi bi-arrow-right ms-1"></i></button>
+  </div>
+
+  <div id="about" class="box p-4 mb-5">
+    <h2 class="h4">About</h2>
+    <p class="muted mb-0">CyberShield powered by AI is a B.Tech CSE mini project (IPS Academy, Indore). It combines Machine Learning and rule-based security checks so you can test a link, message or QR code before you trust it, then keep a history of every scan.</p>
+  </div>
+</section>
+
+<!-- AUTH -->
+<section id="v-auth" class="wrap d-none py-5">
+  <div class="box p-4 mx-auto" style="max-width:420px">
+    <h2 class="h4 mb-3" id="authTitle">Login</h2>
+    <input id="aName" class="form-control mb-2 d-none" placeholder="Your name">
+    <input id="aEmail" type="email" class="form-control mb-2" placeholder="Email">
+    <input id="aPass" type="password" class="form-control mb-3" placeholder="Password (6+ characters)">
+    <button class="btn btn-b w-100" onclick="auth()" id="authBtn">Login</button>
+    <p class="mt-3 mb-0 small"><a href="#" onclick="go('auth',!reg);return false" id="authSwitch"></a></p>
+    <p class="text-danger small mt-2 mb-0" id="authErr"></p>
+  </div>
+</section>
+
+<!-- APP -->
+<section id="v-app" class="wrap d-none py-4">
+  <div class="tabs" id="tabs"></div>
+  <div id="scanPane" class="box p-4">
+    <label id="scanLabel" class="mb-2"></label>
+    <textarea id="scanIn" class="form-control mb-3" rows="4"></textarea>
+    <input id="qrIn" type="file" accept="image/*" class="form-control mb-3 d-none">
+    <button class="btn btn-b" onclick="runScan()"><i class="bi bi-search me-1"></i> Scan</button>
+    <span class="text-danger small ms-3" id="scanErr"></span>
+    <div id="prog" class="mt-4 d-none"><div class="d-flex justify-content-between small muted mb-1"><span>Scanning…</span><span id="barPct">0%</span></div>
+      <div class="meter mb-3"><div id="bar" style="width:0;background:var(--cyan)"></div></div><ul id="stepList" class="list-unstyled mb-0"></ul></div>
+    <div id="result" class="mt-4 d-none"></div>
+  </div>
+  <div id="dashPane" class="d-none"></div>
+  <div id="histPane" class="box p-4 d-none"><div class="table-responsive"><table class="table mb-0">
+    <thead><tr><th>When</th><th>Type</th><th>Checked</th><th>Risk</th><th></th></tr></thead><tbody id="histBody"></tbody></table></div></div>
+</section>
+
+<script>
+let token = localStorage.getItem('cs_token'), tab = 'url', reg = false, chart, cache = [];
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const F = [['URL Detection','bi-link-45deg','#2f7bff','Analyze URLs and identify potentially suspicious or unsafe websites.'],
+ ['SMS Detection','bi-chat-dots','#22d3ee','Check suspicious messages for possible phishing or malicious content.'],
+ ['QR Scanner','bi-qr-code-scan','#f59e0b','Scan QR codes and analyze the destination for potential threats.'],
+ ['Security Reports','bi-bar-chart-fill','#ec4899','View security analysis results and maintain your scan history.']];
+$('feats').innerHTML = F.map(f => `<div class="col-6 col-md-4 col-lg"><div class="fc pb-4"><div class="ic" style="color:${f[2]};border-color:${f[2]}66;background:${f[2]}1a"><i class="bi ${f[1]}"></i></div>
+  <h3 class="h6">${f[0]}</h3><p class="muted small mb-3">${f[3]}</p></div></div>`).join('');
+
+const T = {url:['Website','Paste a website address','https://secure-login-bank.xyz/verify'],
+ sms:['SMS','Paste the text message','Your account is blocked. Verify KYC at bit.ly/kyc now'],
+ qr:['QR code','Upload a photo or screenshot of the QR code',''],
+ dash:['Dashboard'], hist:['History']};
+
+function links() {
+  $('links').innerHTML = token
+    ? `<a class="nl" onclick="go('home')">Home</a><a class="nl" onclick="go('app')">Dashboard</a><a class="nl" onclick="logout()">Logout</a>`
+    : `<a class="nl" onclick="go('home')">Home</a><a class="nl" onclick="go('home');setTimeout(()=>$('about').scrollIntoView({behavior:'smooth'}),50)">About</a>
+       <a class="nl" onclick="go('auth',false)">Login</a><button class="btn btn-b ms-4" onclick="go('auth',true)">Register</button>`;
+}
+function go(v, r) {
+  if (v === 'app' && !token) { v = 'auth'; r = false; }
+  if (v === 'auth') {
+    reg = !!r;
+    $('aName').classList.toggle('d-none', !reg);
+    $('authTitle').textContent = $('authBtn').textContent = reg ? 'Create account' : 'Login';
+    $('authSwitch').textContent = reg ? 'I already have an account' : 'Create an account';
+    $('authErr').textContent = '';
+  }
+  ['home','auth','app'].forEach(x => $('v-' + x).classList.toggle('d-none', x !== v));
+  links();
+  if (v === 'app') { buildTabs(); setTab(tab); }
+  window.scrollTo(0, 0);
+}
+const start = () => token ? go('app') : go('auth', true);
+
+async function api(path, opts = {}) {
+  opts.headers = Object.assign({'Authorization': 'Bearer ' + token}, opts.headers || {});
+  const r = await fetch('/api/' + path, opts), d = await r.json().catch(() => ({}));
+  if (r.status === 401 && token) logout();
+  if (!r.ok) throw new Error(d.detail || 'Something went wrong');
+  return d;
+}
+const post = (p, b) => api(p, {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(b)});
+
+async function auth() {
+  try {
+    const d = await post(reg ? 'register' : 'login', {name: $('aName').value, email: $('aEmail').value, password: $('aPass').value});
+    token = d.token; localStorage.setItem('cs_token', token); go('app');
+  } catch (e) { $('authErr').textContent = e.message; }
+}
+function logout() { localStorage.removeItem('cs_token'); token = null; go('home'); }
+
+function buildTabs() {
+  $('tabs').innerHTML = Object.keys(T).map(k => `<div class="tab" data-t="${k}" onclick="setTab('${k}')">${T[k][0]}</div>`).join('');
+}
+function setTab(t) {
+  tab = t;
+  document.querySelectorAll('.tab').forEach(a => a.classList.toggle('on', a.dataset.t === t));
+  const scan = !['dash', 'hist'].includes(t);
+  $('scanPane').classList.toggle('d-none', !scan);
+  $('dashPane').classList.toggle('d-none', t !== 'dash');
+  $('histPane').classList.toggle('d-none', t !== 'hist');
+  if (scan) {
+    $('scanLabel').textContent = T[t][1]; $('scanIn').placeholder = T[t][2]; $('scanIn').value = '';
+    $('scanIn').classList.toggle('d-none', t === 'qr'); $('qrIn').classList.toggle('d-none', t !== 'qr');
+    $('scanIn').rows = t === 'url' ? 2 : 4;
+    $('result').classList.add('d-none'); $('scanErr').textContent = '';
+  }
+  if (t === 'dash') loadDash();
+  if (t === 'hist') loadHist();
+}
+const STEPS = {
+ url:['Parsing the web address','Checking HTTPS, IP address and domain ending','Looking for fake brand names and risky words','Checking the community reported list','Calculating risk score'],
+ sms:['Reading the message','Running the AI text model (TF-IDF + Logistic Regression)','Checking urgency words and requests for OTP / KYC','Extracting and scanning links inside','Checking the community reported list','Calculating risk score'],
+ qr:['Loading the image','Detecting the QR code','Decoding the QR content','Analysing the content (link / UPI / text)','Checking the community reported list','Calculating risk score']};
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+const setBar = p => { $('bar').style.width = p + '%'; $('barPct').textContent = Math.round(p) + '%'; };
+
+async function runScan() {
+  $('scanErr').textContent = ''; $('result').classList.add('d-none');
+  let send;
+  if (tab === 'qr') {
+    const f = $('qrIn').files[0];
+    if (!f) { $('scanErr').textContent = 'Choose an image first'; return; }
+    send = () => { const fd = new FormData(); fd.append('file', f); return api('scan-qr', {method: 'POST', body: fd}); };
+  } else {
+    const v = $('scanIn').value.trim();
+    if (!v) { $('scanErr').textContent = 'Nothing to scan'; return; }
+    send = () => post('scan/' + tab, {content: v});
+  }
+  const steps = STEPS[tab], p = $('prog');
+  p.classList.remove('d-none'); setBar(0);
+  $('stepList').innerHTML = steps.map((s, i) => `<li id="st${i}" class="step"><i class="bi bi-circle"></i> ${s}</li>`).join('');
+  const req = send().then(d => ({d}), e => ({e}));
+  for (let i = 0; i < steps.length; i++) {
+    const li = $('st' + i);
+    li.className = 'step act'; li.firstElementChild.className = 'bi bi-arrow-repeat spin';
+    setBar(i / steps.length * 100); await sleep(450);
+    li.className = 'step done'; li.firstElementChild.className = 'bi bi-check-circle-fill';
+  }
+  const out = await req; setBar(100); await sleep(250); p.classList.add('d-none');
+  if (out.e) { $('scanErr').textContent = out.e.message; return; }
+  render(out.d);
+}
+function render(d) {
+  const r = $('result'); r.classList.remove('d-none');
+  r.innerHTML = `<div class="row g-3"><div class="col-md-4">
+    <div class="score ${d.level}">${d.score}<span class="fs-6 muted"> / 100</span></div>
+    <div class="meter my-2"><div class="bg${d.level}" style="width:${d.score}%"></div></div>
+    <strong class="${d.level}">${d.level} risk</strong>
+    <div class="muted small">${esc(d.category)} · ${d.confidence}% confidence</div></div>
+    <div class="col-md-8"><h3 class="h6">Why</h3><ul class="mb-3">${d.reasons.map(x => `<li>${esc(x)}</li>`).join('')}</ul>
+    <h3 class="h6">What to do</h3><p class="mb-3">${esc(d.advice)}</p>
+    <button class="btn btn-o btn-sm" id="flagBtn" onclick="flag(${d.id})"><i class="bi bi-flag me-1"></i>Report as suspicious</button>
+    <span id="flagMsg" class="small muted ms-2">${d.reported ? 'Already reported by ' + d.reported + ' user(s)' : ''}</span></div></div>`;
+}
+async function flag(id) {
+  try { const d = await post('flag/' + id, {}); $('flagMsg').textContent = `Thanks! Reported by ${d.count} user(s) so far.`; $('flagBtn').disabled = true; }
+  catch (e) { $('flagMsg').textContent = e.message; }
+}
+async function loadHist() {
+  cache = await api('history');
+  $('histBody').innerHTML = cache.length ? cache.map((h, i) => `<tr><td class="small muted">${h.created}</td><td>${h.kind}</td>
+    <td style="max-width:300px" class="text-truncate">${esc(h.input)}</td><td class="${h.level}">${h.level} (${h.score})</td>
+    <td><a href="#" onclick="openRep(${i});return false">View</a></td></tr>`).join('')
+    : '<tr><td colspan="5" class="muted">No scans yet. Run your first scan from any tab.</td></tr>';
+}
+function openRep(i) { setTab('url'); render(cache[i]); }
+const KL = {url: 'Website', sms: 'SMS', qr: 'QR code'};
+let charts = [];
+async function viewScan(id) { const d = await api('report/' + id); setTab('url'); render(d); }
+async function loadDash() {
+  const s = await api('stats'), L = s.levels, low = L.Low || 0, med = L.Medium || 0, high = L.High || 0, box = $('dashPane');
+  charts.forEach(c => c.destroy()); charts = [];
+  if (!s.total) {
+    box.innerHTML = `<div class="box p-5 text-center"><i class="bi bi-shield-check" style="font-size:3rem;color:var(--blue)"></i>
+      <h2 class="h4 mt-3">No scans yet</h2><p class="muted">Run your first scan to see your security dashboard.</p>
+      <button class="btn btn-b" onclick="setTab('url')">Start scanning</button></div>`; return;
+  }
+  Chart.defaults.color = '#9db0d0'; Chart.defaults.borderColor = '#16294f';
+  const safe = Math.round(low * 100 / s.total), threats = med + high;
+  const kpi = (ic, col, v, l) => `<div class="col-6 col-lg"><div class="box p-3 d-flex align-items-center gap-3 h-100">
+    <div class="kic" style="color:${col};background:${col}1f"><i class="bi ${ic}"></i></div><div><div class="kv">${v}</div><div class="muted small">${l}</div></div></div></div>`;
+  const cats = s.categories.length ? s.categories.map(([n, c]) => `<div class="mb-3"><div class="d-flex justify-content-between small"><span>${esc(n)}</span><strong>${c}</strong></div>
+    <div class="meter"><div style="width:${c * 100 / threats}%;background:var(--high)"></div></div></div>`).join('') : '<p class="muted mb-0">No threats found so far. Great!</p>';
+  const rec = s.recent.map(r => `<tr><td class="small muted">${r.created}</td><td>${KL[r.kind] || r.kind}</td>
+    <td class="text-truncate" style="max-width:260px">${esc(r.input)}</td><td class="${r.level}">${r.level} (${r.score})</td>
+    <td><a href="#" onclick="viewScan(${r.id});return false">View</a></td></tr>`).join('');
+  box.innerHTML = `
+  <div class="row g-3 mb-3">
+    ${kpi('bi-search', '#22d3ee', s.total, 'Total scans')}${kpi('bi-exclamation-triangle-fill', '#ff5d5d', threats, 'Threats found')}
+    ${kpi('bi-shield-check', '#3ecf8e', low, 'Safe results')}${kpi('bi-speedometer2', '#f5b942', s.avg + '/100', 'Average risk score')}
+    ${kpi('bi-flag-fill', '#ec4899', s.my_reports, 'Reports submitted')}</div>
+  <div class="row g-3 mb-3">
+    <div class="col-lg-4"><div class="box p-4 h-100"><div class="ptitle">Risk levels</div><div style="height:250px"><canvas id="cLv"></canvas></div></div></div>
+    <div class="col-lg-8"><div class="box p-4 h-100"><div class="ptitle">Scans in the last 7 days</div><div style="height:250px"><canvas id="cDay"></canvas></div></div></div></div>
+  <div class="row g-3 mb-3">
+    <div class="col-lg-6"><div class="box p-4 h-100"><div class="ptitle">Scans by type and risk</div><div style="height:250px"><canvas id="cKind"></canvas></div></div></div>
+    <div class="col-lg-6"><div class="box p-4 h-100"><div class="ptitle">Top threat categories</div>${cats}</div></div></div>
+  <div class="row g-3">
+    <div class="col-lg-8"><div class="box p-4 h-100"><div class="ptitle">Recent scans</div><div class="table-responsive"><table class="table mb-0">
+      <thead><tr><th>When</th><th>Type</th><th>Checked</th><th>Risk</th><th></th></tr></thead><tbody>${rec}</tbody></table></div></div></div>
+    <div class="col-lg-4"><div class="box p-4 h-100"><div class="ptitle">Safety overview</div>
+      <div class="score ${safe >= 70 ? 'Low' : safe >= 40 ? 'Medium' : 'High'}">${safe}%</div><div class="muted small mb-2">of your scans were safe</div>
+      <div class="meter mb-4"><div style="width:${safe}%;background:var(--low)"></div></div>
+      <div class="d-flex justify-content-between mb-2"><span class="muted">Your reports</span><strong>${s.my_reports}</strong></div>
+      <div class="d-flex justify-content-between mb-2"><span class="muted">Community reported items</span><strong>${s.community_reports}</strong></div>
+      <div class="d-flex justify-content-between"><span class="muted">High risk found</span><strong class="High">${high}</strong></div></div></div></div>`;
+  charts.push(new Chart($('cLv'), {type: 'doughnut', data: {labels: ['Low', 'Medium', 'High'],
+    datasets: [{data: [low, med, high], backgroundColor: ['#3ecf8e', '#f5b942', '#ff5d5d'], borderColor: '#0a1630'}]},
+    options: {maintainAspectRatio: false, cutout: '62%', plugins: {legend: {position: 'bottom'}}}}));
+  charts.push(new Chart($('cDay'), {type: 'line', data: {labels: s.days, datasets: [{label: 'Scans', data: s.per_day, borderColor: '#22d3ee',
+    backgroundColor: '#22d3ee33', fill: true, tension: .35, pointRadius: 4}]},
+    options: {maintainAspectRatio: false, plugins: {legend: {display: false}}, scales: {y: {beginAtZero: true, ticks: {precision: 0}}}}}));
+  const ks = Object.keys(s.kind_levels);
+  charts.push(new Chart($('cKind'), {type: 'bar', data: {labels: ks.map(k => KL[k] || k), datasets:
+    [['Low', '#3ecf8e'], ['Medium', '#f5b942'], ['High', '#ff5d5d']].map(([lv, col]) => ({label: lv, data: ks.map(k => s.kind_levels[k][lv]), backgroundColor: col}))},
+    options: {maintainAspectRatio: false, scales: {x: {stacked: true}, y: {stacked: true, beginAtZero: true, ticks: {precision: 0}}}, plugins: {legend: {position: 'bottom'}}}}));
+}
+go('home');
+</script>
+</body>
+</html>

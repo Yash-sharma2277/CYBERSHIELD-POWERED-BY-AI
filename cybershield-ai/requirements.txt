@@ -1,0 +1,9 @@
+fastapi
+uvicorn[standard]
+sqlalchemy
+python-multipart
+scikit-learn
+numpy
+pandas
+opencv-python-headless
+# pymysql   # only if you use MySQL
