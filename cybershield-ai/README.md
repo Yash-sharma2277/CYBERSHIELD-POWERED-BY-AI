@@ -1,5 +1,4 @@
 # CyberShield powered by AI: Intelligent Cyber Threat Detection and Digital Safety Platform
-B.Tech CSE Mini Project, IPS Academy, Indore. Yash Sharma (0808CS253D05), supervised by Mr. Pratik Jain.
 
 ## Run
     python -m venv venv && venv\Scripts\activate      (Linux/macOS: source venv/bin/activate)
